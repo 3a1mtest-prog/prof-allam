@@ -93,7 +93,7 @@ export default function LanyardCard() {
           {/* Punch hole */}
           <div className="absolute left-1/2 top-2 h-1.5 w-9 -translate-x-1/2 rounded-full bg-black/70 ring-1 ring-white/10" />
 
-          <div className="relative mt-4 overflow-hidden rounded-xl bg-gradient-to-b from-crimson-deep/45 to-void">
+          <div className="relative mt-4 overflow-hidden rounded-xl bg-void">
             <div className="aspect-[3/3.25] w-full">
               {broken ? (
                 <PortraitPlaceholder />
@@ -109,8 +109,13 @@ export default function LanyardCard() {
                 />
               )}
             </div>
-            {/* Crimson key light wash over the portrait */}
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-void via-transparent to-crimson/12" />
+            {/*
+              Crimson is confined to the edge: an inset glow hugging the
+              border plus a hairline ring. The photo itself stays untinted so
+              the face and suit read as they do in the original shot.
+            */}
+            <div className="pointer-events-none absolute inset-0 rounded-xl shadow-[inset_0_0_14px_2px_rgba(255,30,45,0.6),inset_0_0_38px_7px_rgba(140,15,24,0.32)]" />
+            <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-crimson/70" />
           </div>
 
           <div className="mt-2.5 flex items-center justify-between rounded-lg bg-white/5 px-3 py-2">
