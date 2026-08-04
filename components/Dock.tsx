@@ -2,13 +2,12 @@
 
 import { motion, useReducedMotion } from 'framer-motion';
 import { profile } from '@/lib/data';
-import { GithubIcon, InstagramIcon, LinkedinIcon, MailIcon, TerminalIcon } from './Icons';
+import { GithubIcon, GlobeIcon, InstagramIcon, TerminalIcon } from './Icons';
 
 const items = [
-  { label: 'Email', href: `mailto:${profile.email}`, Icon: MailIcon, external: false },
   { label: 'Instagram', href: profile.socials.instagram, Icon: InstagramIcon, external: true },
   { label: 'GitHub', href: profile.socials.github, Icon: GithubIcon, external: true },
-  { label: 'LinkedIn', href: profile.socials.linkedin, Icon: LinkedinIcon, external: true },
+  { label: 'Website', href: profile.socials.website, Icon: GlobeIcon, external: true },
 ];
 
 /** Floating macOS-style dock, pinned bottom-centre on every viewport. */

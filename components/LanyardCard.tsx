@@ -101,7 +101,7 @@ export default function LanyardCard() {
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
                   ref={avatarRef}
-                  src="/assets/avatar.png"
+                  src="/assets/avatar.webp"
                   alt={profile.name}
                   onError={() => setBroken(true)}
                   className="h-full w-full object-cover"
@@ -133,7 +133,7 @@ export default function LanyardCard() {
   );
 }
 
-/** Shown until a real portrait is dropped at /public/assets/avatar.png */
+/** Shown until a real portrait is dropped at /public/assets/avatar.webp */
 function PortraitPlaceholder() {
   return (
     <svg viewBox="0 0 120 144" className="h-full w-full" aria-hidden="true">
@@ -155,7 +155,7 @@ function PortraitPlaceholder() {
         letterSpacing="1.6"
         fontFamily="monospace"
       >
-        ADD avatar.png
+        ADD avatar.webp
       </text>
     </svg>
   );

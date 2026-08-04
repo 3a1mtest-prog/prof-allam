@@ -1,97 +1,96 @@
+import type { MediaSource } from '@/components/Media';
+
 /**
  * Single source of truth for every piece of copy on the site.
- * Editing this file (or the Spidey admin console at /spidey.html) re-skins the
- * entire portfolio without touching a single component.
+ *
+ * Content sourced from the personal portfolio at allam.qd.je
+ * (github.com/3a1mtest-prog/Allam) and the public GitHub project list.
  */
 
 export const profile = {
   greeting: "Hello, I'm",
-  name: 'SHADIN KAPPACHALI',
-  handle: 'Shadin_Kappzzz',
-  shortName: 'SHADIN',
-  cardRole: 'Developer',
-  tagline: 'CS STUDENT & DEVELOPER',
+  name: 'ALLAM GHABEN',
+  nameArabic: 'علام غبن',
+  handle: '_3a1m',
+  shortName: 'ALLAM',
+  cardRole: 'Engineer',
+  tagline: 'SOFTWARE ENGINEER',
   roles: [
-    'FULL-STACK & FLUTTER DEVELOPER • VIBE CODER (AI-PROMPT WEB DEV)',
-    'AI & ROBOTICS TRAINER • B.TECH CS STUDENT (2ND YEAR)',
+    'SOFTWARE ENGINEER • AI AGENTS & AUTOMATION DEVELOPER',
+    'HYPER-AUTOMATION CATALYST • GENERATIVE MEDIA',
   ],
-  bio: 'A Computer Science student at KMCT Institute Of Emerging Technology and Management in Kerala with a Diploma in Computer Engineering. Passionate about software development, robotics, AI, and Vibe Coding—crafting full-stack web applications and digital platforms at ultra-high speed using advanced AI prompting & modern workflows.',
-  note: 'Building intelligent web applications, AI face recognition IoT systems, and leading campus tech innovation.',
-  location: 'KERALA, INDIA',
-  email: 'mail4shadin@gmail.com',
-  resume: '/Shadin_Kappachali_CV.pdf',
-  lanyardText: 'AI • VISION • ROBOTICS • SOFTWARE • ',
+  bio: 'Software engineer building intelligent systems end to end — generative media, machine learning, automation, and agent systems. Cinematic images, video and sound; models trained and shipped; pipelines and agents that plan, act, and report back.',
+  note: 'Intelligent systems, end to end — from dataset to deployment, from prompt to pipeline.',
+  location: 'GAZA, PALESTINE',
+  email: '',
+  resume: '',
+  website: 'https://allam.qd.je',
+  lanyardText: 'AI • AGENTS • AUTOMATION • MEDIA • ',
   socials: {
-    instagram: 'https://instagram.com/shadin_kappzzz',
-    github: 'https://github.com/shadinkappachali',
-    linkedin: 'https://linkedin.com/in/shadinkappachali',
+    instagram: 'https://www.instagram.com/_3a1m/',
+    github: 'https://github.com/3a1mtest-prog',
+    website: 'https://allam.qd.je',
   },
 } as const;
 
 export const stats = [
-  { value: '2ND YR', label: 'B.TECH CS @ KMCT\nEMERGING TECH' },
-  { value: '4+', label: 'FEATURED\nPROJECTS' },
-  { value: 'IEDC', label: 'TECHNICAL HEAD\n& EVENT LEAD' },
+  { value: '2.4K', label: 'INSTAGRAM\nFOLLOWERS' },
+  { value: '04', label: 'CORE\nDISCIPLINES' },
+  { value: 'GAZA', label: 'BASED IN\nPALESTINE' },
 ];
 
 export const navLinks = [
-  { label: 'SERVICES', href: '#services' },
+  { label: 'WHAT I DO', href: '#services' },
   { label: 'PROJECTS', href: '#projects' },
-  { label: 'AWARDS', href: '#awards' },
   { label: 'SKILLS', href: '#skills' },
-  { label: 'EXPERIENCE', href: '#experience' },
-  { label: 'GALLERY', href: '#gallery' },
+  { label: 'REELS', href: '#gallery' },
   { label: 'CONTACT', href: '#contact' },
 ];
 
+/** The four disciplines, carried over verbatim from the source portfolio. */
 export const services = [
   {
-    icon: '🌐',
-    title: 'FULL-STACK WEB DEV',
-    body: 'Building fast React.js, Next.js, Vite & Node.js applications with Tailwind CSS.',
+    icon: '🎬',
+    title: 'GENERATIVE MEDIA',
+    body: 'Cinematic images, video, and sound. Full visual worlds, consistent characters, film-grade color.',
   },
   {
-    icon: '👁️',
-    title: 'AI & COMPUTER VISION',
-    body: 'Developing RoomPulse face recognition attendance systems with OpenCV & ESP32-CAM.',
-  },
-  {
-    icon: '🤖',
-    title: 'EMBEDDED IOT & ROBOTICS',
-    body: 'Programming ESP32, Arduino microcontrollers, hardware sensors & automation systems.',
+    icon: '🧠',
+    title: 'MACHINE LEARNING',
+    body: 'Training and fine-tuning, datasets to deployment. Weights that behave in the real world.',
   },
   {
     icon: '⚡',
-    title: 'DATABASE & BACKEND',
-    body: 'Structuring backend APIs & cloud storage with MongoDB, PostgreSQL, Supabase & Firebase.',
+    title: 'AUTOMATION',
+    body: 'Pipelines and bots that erase manual work while you sleep.',
   },
   {
-    icon: '🚀',
-    title: 'IEDC TECH LEADERSHIP',
-    body: 'Organizing tech expos, hackathons, AI workshops, gaming tournaments & science exhibitions.',
+    icon: '🤖',
+    title: 'AGENT SYSTEMS',
+    body: 'Tools, memory, guardrails. Systems that plan, act, and report back.',
   },
 ];
 
 export const philosophy = [
   {
     n: '01',
-    title: 'HARDWARE + SOFTWARE SYNTHESIS',
-    body: 'Combining OpenCV computer vision and ESP32-CAM hardware with cloud databases and web analytics dashboards.',
+    title: 'INTELLIGENT SYSTEMS, END TO END',
+    body: 'Not a model in isolation — the whole chain. Dataset, training, serving, and the interface a human actually touches.',
   },
   {
     n: '02',
-    title: 'MODERN FRONTEND ENGINEERING',
-    body: 'Building responsive Next.js & React.js interfaces with immersive animations and component-based architecture.',
+    title: 'AUTOMATION OVER REPETITION',
+    body: 'Anything done twice by hand is a pipeline waiting to be written. Bots and workflows that erase manual work.',
   },
   {
     n: '03',
-    title: 'INSTITUTIONAL AUTOMATION',
-    body: 'Developing practical management platforms for arts & sports, expense tracking, and classroom attendance.',
+    title: 'FILM-GRADE GENERATIVE OUTPUT',
+    body: 'Consistent characters, coherent visual worlds, and color that holds up — generative media treated as craft.',
   },
   {
     n: '04',
-    title: 'INNOVATION & LEADERSHIP',
-    body: 'Leading technical initiatives at IEDC, driving MEX25 operations, and promoting student entrepreneurship.',
+    title: 'AGENTS THAT REPORT BACK',
+    body: 'Tools, memory, and guardrails so a system can plan and act autonomously without going quiet or off the rails.',
   },
 ];
 
@@ -100,7 +99,6 @@ export type Project = {
   title: string;
   role: string;
   status: 'LIVE' | 'ACTIVE';
-  image: string;
   href: string;
   stack: string[];
 };
@@ -108,197 +106,120 @@ export type Project = {
 export const projects: Project[] = [
   {
     n: '01',
-    title: 'PIBOTS ROBOTICS',
-    role: 'OFFICIAL WEBSITE CREATOR',
+    title: 'ALLAM.QD.JE',
+    role: 'PERSONAL PORTFOLIO — DESIGN & BUILD',
     status: 'LIVE',
-    image: '/assets/projects/pibots.svg',
-    href: '#',
-    stack: ['Next.js', 'Three.js', 'Tailwind'],
+    href: 'https://allam.qd.je',
+    stack: ['React 19', 'TanStack Start', 'GSAP', 'Cloudflare Workers'],
   },
   {
     n: '02',
-    title: 'NEXQ GLOBAL',
-    role: 'ADMIN PAGE DEVELOPER',
+    title: 'غزاوي ستور — AL-GHAZAWE',
+    role: 'FULL-STACK DEVELOPER',
     status: 'LIVE',
-    image: '/assets/projects/nexq.svg',
-    href: '#',
-    stack: ['React', 'Node.js', 'PostgreSQL'],
+    href: 'https://github.com/3a1mtest-prog/weballam',
+    stack: ['Next.js 16', 'TypeScript', 'Tailwind v4', 'Supabase'],
   },
   {
     n: '03',
-    title: 'ROOMPULSE AI',
-    role: 'ESP32-CAM & OPENCV LEAD',
-    status: 'ACTIVE',
-    image: '/assets/projects/roompulse.svg',
-    href: '#',
-    stack: ['Python', 'OpenCV', 'Supabase'],
+    title: 'HANI SELMI PORTFOLIO',
+    role: 'WEB DEVELOPER — CLIENT BUILD',
+    status: 'LIVE',
+    href: 'https://github.com/3a1mtest-prog/3a1m',
+    stack: ['Next.js', 'Framer Motion', 'shadcn/ui'],
   },
   {
     n: '04',
-    title: 'HOT WHEELS 3D',
-    role: 'NEXT.JS WEB DEVELOPER',
-    status: 'LIVE',
-    image: '/assets/projects/hotwheels.svg',
-    href: '#',
-    stack: ['Next.js', 'Framer Motion', 'WebGL'],
-  },
-];
-
-export const leadership = [
-  {
-    icon: '⚡',
-    title: 'IEDC TECHNICAL HEAD',
-    org: "Ma'din College of Engineering and Management",
-    body: 'Headed campus technical initiatives, student workshops, and innovation projects during Diploma.',
-  },
-  {
-    icon: '🏆',
-    title: 'TECHNICAL LEAD — MEX25',
-    org: 'MEX25 Flagship Event',
-    body: 'Headed technical infrastructure, platform execution, and core event operations.',
-  },
-  {
-    icon: '⭐',
-    title: 'VOLUNTEER — SCALE-UP 2K26',
-    org: 'Scale-Up 2K26',
-    body: 'Dedicated volunteer managing event operations, logistics, and tech exhibition stalls.',
-  },
-];
-
-export const awards = [
-  {
-    title: 'IEDC TECHNICAL HEAD',
-    org: "Ma'din College of Engineering and Management",
-    meta: 'Diploma Period',
-    caption: 'IEDC Technical Head',
-  },
-  {
-    title: 'BEST ROBOTICS EXHIBITION WINNER',
-    org: 'Campus Robotics Exhibition',
-    meta: 'Diploma Period',
-    caption: 'Best Robotics Exhibition Winner',
-  },
-  {
-    title: 'PIBOTS OFFICIAL WEB CREATOR',
-    org: 'Pibots Robotics',
-    meta: 'Since 2024',
-    caption: 'Pibots Official Web Creator',
+    title: 'GENERATIVE MEDIA REEL',
+    role: 'DIRECTION & AI PIPELINE',
+    status: 'ACTIVE',
+    href: 'https://www.instagram.com/_3a1m/',
+    stack: ['Diffusion', 'Video Gen', 'Color Grade'],
   },
 ];
 
 export type Skill = { name: string; icon: string; color: string };
 
 export const skills: Skill[] = [
-  { name: 'React.js', icon: 'react', color: '#61DAFB' },
+  { name: 'React', icon: 'react', color: '#61DAFB' },
   { name: 'Next.js', icon: 'next', color: '#FFFFFF' },
-  { name: 'Vite', icon: 'vite', color: '#A970FF' },
-  { name: 'Tailwind', icon: 'tailwind', color: '#38BDF8' },
-  { name: 'Flutter', icon: 'flutter', color: '#54C5F8' },
-  { name: 'Node.js', icon: 'node', color: '#8CC84B' },
-  { name: 'Express', icon: 'express', color: '#E5E5E5' },
-  { name: 'JavaScript', icon: 'js', color: '#F7DF1E' },
   { name: 'TypeScript', icon: 'ts', color: '#3178C6' },
+  { name: 'Tailwind', icon: 'tailwind', color: '#38BDF8' },
+  { name: 'TanStack', icon: 'tanstack', color: '#FF4154' },
+  { name: 'Vite', icon: 'vite', color: '#A970FF' },
+  { name: 'Bun', icon: 'bun', color: '#FBF0DF' },
+  { name: 'Node.js', icon: 'node', color: '#8CC84B' },
   { name: 'Python', icon: 'python', color: '#FFD343' },
-  { name: 'MongoDB', icon: 'mongo', color: '#4DB33D' },
+  { name: 'GSAP', icon: 'gsap', color: '#88CE02' },
+  { name: 'Three.js', icon: 'three', color: '#FFFFFF' },
   { name: 'Supabase', icon: 'supabase', color: '#3ECF8E' },
-  { name: 'Arduino', icon: 'arduino', color: '#00979D' },
-  { name: 'ESP32', icon: 'esp32', color: '#E7352C' },
-  { name: 'C / C++', icon: 'cpp', color: '#659AD2' },
-  { name: 'Java', icon: 'java', color: '#F89820' },
-  { name: 'OpenCV', icon: 'opencv', color: '#5C3EE8' },
-  { name: 'Canva', icon: 'canva', color: '#00C4CC' },
-  { name: 'GitHub', icon: 'github', color: '#FFFFFF' },
-  { name: 'Android Studio', icon: 'android', color: '#3DDC84' },
-  { name: 'VS Code', icon: 'vscode', color: '#0098FF' },
+  { name: 'Cloudflare', icon: 'cloudflare', color: '#F6821F' },
+  { name: 'Vercel', icon: 'vercel', color: '#FFFFFF' },
+  { name: 'Git', icon: 'git', color: '#F05032' },
+  { name: 'AI Agents', icon: 'agents', color: '#ff1e2d' },
+  { name: 'Automation', icon: 'automation', color: '#ff5c66' },
+  { name: 'Diffusion', icon: 'diffusion', color: '#C792EA' },
 ];
 
 export const objective = {
   quote:
-    'To become a skilled software engineer developing innovative and impactful technology solutions in web engineering, AI, and robotics.',
-  author: 'SHADIN KAPPACHALI',
-  authorRole: 'CS STUDENT & FULL-STACK DEVELOPER',
+    'Intelligent systems, end to end. Generative media, machine learning, automation, and agents — built to run in the real world, not just in a notebook.',
+  author: 'ALLAM GHABEN · علام غبن',
+  authorRole: 'SOFTWARE ENGINEER',
 };
 
-export const education = [
-  {
-    title: 'B.Tech in Computer Science & Engineering',
-    org: 'KMCT Institute Of Emerging Technology & Management',
-    period: '2024 — 2028 (2nd Year)',
-    body: 'Specializing in Full-Stack Web Development, Artificial Intelligence & Software Engineering.',
-  },
-  {
-    title: 'Diploma in Computer Engineering',
-    org: 'Government Polytechnic College',
-    period: '2021 — 2024',
-    body: 'Core foundation in Computer Hardware, Networking, C/C++ and Software Engineering.',
-  },
-];
-
-export const experience = [
-  {
-    title: 'Official Website Creator',
-    org: 'Pibots Robotics',
-    period: '2024 — Present',
-    body: 'Engineered the official product website with 3D kit viewer and platform ordering flow.',
-  },
-  {
-    title: 'Admin Page Developer',
-    org: 'NexQ Global',
-    period: '2024 — Present',
-    body: 'Built the admin interface, revenue analytics and client-management dashboard.',
-  },
-];
-
-export const community = [
-  {
-    n: '01',
-    title: 'IEDC — TECHNICAL HEAD',
-    body: "Headed technical initiatives, organized tech events & workshops, and promoted student innovation at Ma'din College of Engineering and Management.",
-  },
-  {
-    n: '02',
-    title: 'MEX25 — TECHNICAL LEAD',
-    body: 'Led technical infrastructure, platform deployment, live event web portals, and core operations for the MEX25 flagship event.',
-  },
-  {
-    n: '03',
-    title: 'SCALE-UP 2K26 — VOLUNTEER',
-    body: 'Volunteer managing event operations, logistics, registration counters, and tech exhibition stalls.',
-  },
-  {
-    n: '04',
-    title: 'EVENT ORGANIZER & SPEAKER',
-    body: 'Organized hackathons, AI & Robotics workshops, gaming tournaments, technology fests and science exhibitions.',
-  },
-];
+/** Instagram figures as published on the source portfolio. */
+export const instagram = {
+  handle: '_3a1m',
+  href: 'https://www.instagram.com/_3a1m/',
+  avatar: '/assets/ig-avatar.jpg',
+  followers: '2,444',
+  following: '309',
+  bio: [
+    'Gaza · PS',
+    'AI agents & automation Developer',
+    'Hyper-Automation Catalyst',
+    'Software Engineer',
+  ],
+};
 
 export const gallery = [
   {
-    title: 'ROBOTICS & AI WORKSHOP',
-    caption: 'Training students on Arduino & IoT',
-    image: '/assets/gallery/workshop.svg',
+    title: 'REEL 01',
+    caption: 'From @_3a1m on Instagram',
+    media: {
+      type: 'video' as const,
+      src: '/assets/reels/reel-1.mp4',
+      poster: '/assets/reels/reel-1-poster.jpg',
+    },
   },
   {
-    title: 'FULL-STACK CODING CLASS',
-    caption: 'Teaching React.js & web architecture',
-    image: '/assets/gallery/coding.svg',
+    title: 'REEL 02',
+    caption: 'From @_3a1m on Instagram',
+    media: {
+      type: 'video' as const,
+      src: '/assets/reels/reel-2.mp4',
+      poster: '/assets/reels/reel-2-poster.jpg',
+    },
   },
   {
-    title: 'MEX25 LIVE EXPO DEMO',
-    caption: 'Exhibiting robotics & student projects',
-    image: '/assets/gallery/expo.svg',
+    title: 'REEL 03',
+    caption: 'From @_3a1m on Instagram',
+    media: {
+      type: 'video' as const,
+      src: '/assets/reels/reel-3.mp4',
+      poster: '/assets/reels/reel-3-poster.jpg',
+    },
   },
 ];
 
 export const contact = {
   heading: "LET'S BUILD TOGETHER",
-  body: 'Open for full-stack web development roles, Next.js / React projects, AI & IoT solutions, robotics workshops, and student tech event collaborations.',
+  body: 'Open for AI agent and automation work, generative media direction, machine learning builds, and full-stack product engineering.',
   links: [
-    { label: 'mail4shadin@gmail.com', href: 'mailto:mail4shadin@gmail.com', icon: 'mail' },
-    { label: '@shadin_kappzzz', href: 'https://instagram.com/shadin_kappzzz', icon: 'instagram' },
-    { label: 'github.com/shadinkappachali', href: 'https://github.com/shadinkappachali', icon: 'github' },
-    { label: 'linkedin.com/in/shadinkappachali', href: 'https://linkedin.com/in/shadinkappachali', icon: 'linkedin' },
-    { label: 'WhatsApp / Contact on Request', href: 'mailto:mail4shadin@gmail.com', icon: 'phone' },
-    { label: 'Kerala, India', href: '#', icon: 'pin' },
+    { label: '@_3a1m', href: 'https://www.instagram.com/_3a1m/', icon: 'instagram' },
+    { label: 'allam.qd.je', href: 'https://allam.qd.je', icon: 'globe' },
+    { label: 'github.com/3a1mtest-prog', href: 'https://github.com/3a1mtest-prog', icon: 'github' },
+    { label: 'Gaza, Palestine', href: '#', icon: 'pin' },
   ],
 };

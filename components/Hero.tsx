@@ -3,7 +3,7 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { profile, stats } from '@/lib/data';
 import LanyardCard from './LanyardCard';
-import { ArrowIcon, DownloadIcon, PinIcon, SparkIcon } from './Icons';
+import { ArrowIcon, GlobeIcon, PinIcon, SparkIcon } from './Icons';
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -43,6 +43,15 @@ export default function Hero() {
             {profile.name}
           </motion.h1>
 
+          <motion.p
+            {...rise(0.16)}
+            className="relative mt-3 inline-block text-2xl text-bone/70 sm:text-3xl"
+            dir="rtl"
+            lang="ar"
+          >
+            {profile.nameArabic}
+          </motion.p>
+
           <motion.div {...rise(0.2)} className="relative mt-5 space-y-1">
             {profile.roles.map((role) => (
               <p
@@ -70,12 +79,13 @@ export default function Hero() {
               <ArrowIcon className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
             </a>
             <a
-              href={profile.resume}
-              download
+              href={profile.website}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group inline-flex min-h-11 items-center gap-2.5 rounded-full border border-white/12 bg-white/5 px-6 text-[0.68rem] font-semibold tracking-[0.16em] text-bone transition-all hover:border-crimson/60 hover:bg-crimson/10"
             >
-              DOWNLOAD CV
-              <DownloadIcon className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-y-0.5" />
+              ALLAM.QD.JE
+              <GlobeIcon className="h-3.5 w-3.5 transition-transform duration-300 group-hover:rotate-12" />
             </a>
             <span className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/8 px-5 text-[0.68rem] font-semibold tracking-[0.16em] text-ash">
               <PinIcon className="h-3.5 w-3.5 text-crimson" />

@@ -100,6 +100,16 @@ export function TerminalIcon(props: IconProps) {
   );
 }
 
+export function GlobeIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <circle cx="12" cy="12" r="9.3" />
+      <path d="M2.9 12h18.2" />
+      <path d="M12 2.7c2.4 2.6 3.6 5.7 3.6 9.3s-1.2 6.7-3.6 9.3c-2.4-2.6-3.6-5.7-3.6-9.3s1.2-6.7 3.6-9.3Z" />
+    </svg>
+  );
+}
+
 export const socialIconMap = {
   mail: MailIcon,
   instagram: InstagramIcon,
@@ -107,6 +117,7 @@ export const socialIconMap = {
   linkedin: LinkedinIcon,
   phone: PhoneIcon,
   pin: PinIcon,
+  globe: GlobeIcon,
 } as const;
 
 export type SocialIconName = keyof typeof socialIconMap;

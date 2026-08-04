@@ -31,24 +31,25 @@ const caveat = Caveat({
 const description = profile.bio;
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://shadinkappzzz.vercel.app'),
-  title: `${profile.name} — Full-Stack Developer, AI & Robotics`,
+  metadataBase: new URL('https://allam.qd.je'),
+  title: `${profile.name} — Software Engineer, AI Agents & Automation`,
   description,
   keywords: [
-    'Shadin Kappachali',
-    'Shadin_Kappzzz',
-    'Next.js developer',
-    'Flutter developer',
-    'AI computer vision',
-    'robotics trainer',
-    'Kerala developer portfolio',
+    'Allam Ghaben',
+    'علام غبن',
+    '_3a1m',
+    'AI agents',
+    'automation developer',
+    'generative media',
+    'machine learning',
+    'software engineer Gaza',
   ],
   authors: [{ name: profile.name }],
   openGraph: {
     title: `${profile.name} — ${profile.tagline}`,
     description,
     type: 'profile',
-    locale: 'en_IN',
+    locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',

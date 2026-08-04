@@ -1,8 +1,8 @@
 {
-  "name": "shadin-kappzzz-portfolio",
+  "name": "allam-ghaben-portfolio",
   "version": "1.0.0",
   "private": true,
-  "description": "Ultra-Dark Marvel Developer Portfolio — cinematic black & crimson single-page portfolio",
+  "description": "Personal portfolio of Allam Ghaben — cinematic black & crimson single-page site",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

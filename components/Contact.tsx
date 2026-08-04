@@ -19,7 +19,9 @@ export default function Contact() {
                   {contact.body}
                 </p>
                 <a
-                  href={`mailto:${profile.email}`}
+                  href={profile.socials.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group mt-9 inline-flex min-h-12 items-center gap-3 rounded-full bg-crimson px-7 text-[0.68rem] font-semibold tracking-[0.16em] text-white transition-shadow hover:shadow-[0_0_34px_-6px_rgba(255,30,45,0.9)]"
                 >
                   GET IN TOUCH
@@ -62,7 +64,7 @@ export default function Contact() {
 
           <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
             <p className="mono text-[0.6rem] tracking-[0.14em] text-dust">
-              © {new Date().getFullYear()} {profile.name} — {profile.handle}
+              © {new Date().getFullYear()} {profile.name} — @{profile.handle}
             </p>
             <p className="mono text-[0.6rem] tracking-[0.14em] text-dust">
               BUILT WITH NEXT.JS · TAILWIND · FRAMER MOTION
