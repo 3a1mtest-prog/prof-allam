@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { profile, stats } from '@/lib/data';
 import LanyardCard from './LanyardCard';
+import HeroBackdrop from './HeroBackdrop';
 import { ArrowIcon, GlobeIcon, PinIcon, SparkIcon } from './Icons';
 
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -20,18 +21,11 @@ export default function Hero() {
         };
 
   return (
-    <section id="top" className="relative z-10 px-5 pb-16 pt-28 sm:px-8 sm:pt-32">
-      <div className="mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-8">
+    <section id="top" className="relative z-10 overflow-hidden px-5 pb-16 pt-28 sm:px-8 sm:pt-32">
+      <HeroBackdrop />
+      <div className="relative mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-8">
         {/* ---------------- Left: identity ---------------- */}
         <div className="relative">
-          {/* Oversized ghost wordmark bleeding behind the headline */}
-          <span
-            aria-hidden="true"
-            className="display pointer-events-none absolute -top-2 left-0 select-none text-[22vw] leading-none text-crimson/[0.07] lg:left-24 lg:text-[13rem]"
-          >
-            {profile.shortName}
-          </span>
-
           <motion.p {...rise(0.05)} className="hand relative text-3xl text-bone/90 sm:text-4xl">
             {profile.greeting}
           </motion.p>
