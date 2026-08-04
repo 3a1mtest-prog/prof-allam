@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Spidey Console — Portfolio Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fira+Code:wght@400;600&family=Outfit:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --void: #0a0404;
+        --shell: #1a0c0c;
+        --crimson: #ff1e2d;
+        --bone: #f2e9e9;
+        --ash: #a89a9a;
+        --dust: #6d5f5f;
+        --line: rgba(255, 255, 255, 0.08);
+        color-scheme: dark;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255, 30, 45, 0.16), transparent 60%),
+          var(--void);
+        color: var(--bone);
+        font-family: 'Outfit', system-ui, sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
+      }
+      .wrap { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.25rem 5rem; }
+      header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 2.5rem; }
+      h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.2rem, 6vw, 3.4rem); letter-spacing: 0.02em; margin: 0; line-height: 0.9; }
+      h1 span { color: var(--crimson); }
+      .sub { font-family: 'Fira Code', monospace; font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dust); margin: 0.5rem 0 0; }
+      a.back { font-family: 'Fira Code', monospace; font-size: 0.68rem; letter-spacing: 0.14em; color: var(--crimson); text-decoration: none; border: 1px solid var(--line); border-radius: 999px; padding: 0.75rem 1.25rem; min-height: 44px; display: inline-flex; align-items: center; }
+      a.back:hover { border-color: var(--crimson); background: rgba(255, 30, 45, 0.08); }
+
+      .note { border: 1px solid var(--line); border-left: 3px solid var(--crimson); border-radius: 0 12px 12px 0; background: rgba(255, 255, 255, 0.025); padding: 1rem 1.25rem; margin-bottom: 2.25rem; font-size: 0.88rem; color: var(--ash); }
+      .note code { font-family: 'Fira Code', monospace; color: var(--bone); font-size: 0.82rem; }
+
+      fieldset { border: 1px solid var(--line); border-radius: 16px; background: rgba(255, 255, 255, 0.022); padding: 1.5rem; margin: 0 0 1.25rem; }
+      legend { font-size: 0.66rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--crimson); padding: 0 0.6rem; }
+      .grid { display: grid; gap: 1rem; }
+      @media (min-width: 720px) { .grid.two { grid-template-columns: 1fr 1fr; } }
+
+      label { display: block; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ash); margin-bottom: 0.5rem; }
+      input, textarea {
+        width: 100%; min-height: 44px; padding: 0.7rem 0.9rem;
+        background: rgba(0, 0, 0, 0.4); border: 1px solid var(--line); border-radius: 10px;
+        color: var(--bone); font-family: 'Fira Code', monospace; font-size: 0.82rem; line-height: 1.5;
+      }
+      textarea { resize: vertical; min-height: 110px; }
+      input:focus, textarea:focus { outline: 2px solid var(--crimson); outline-offset: 1px; border-color: transparent; }
+
+      .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 2rem 0 1.5rem; }
+      button {
+        min-height: 46px; padding: 0 1.6rem; border-radius: 999px; border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.05); color: var(--bone);
+        font-family: 'Outfit', sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer;
+        transition: all 0.25s ease;
+      }
+      button:hover { border-color: var(--crimson); background: rgba(255, 30, 45, 0.1); }
+      button.primary { background: var(--crimson); border-color: var(--crimson); color: #fff; }
+      button.primary:hover { box-shadow: 0 0 28px -6px rgba(255, 30, 45, 0.9); }
+
+      pre {
+        background: #060202; border: 1px solid var(--line); border-radius: 14px;
+        padding: 1.25rem; overflow-x: auto; font-family: 'Fira Code', monospace;
+        font-size: 0.74rem; line-height: 1.7; color: #d8cfcf; max-height: 460px;
+      }
+      .ok { color: #3ecf8e; font-family: 'Fira Code', monospace; font-size: 0.7rem; letter-spacing: 0.1em; }
+      .proj { border: 1px solid var(--line); border-radius: 12px; padding: 1rem; margin-bottom: 0.75rem; }
+      .proj h3 { font-family: 'Fira Code', monospace; font-size: 0.7rem; letter-spacing: 0.12em; color: var(--crimson); margin: 0 0 0.85rem; text-transform: uppercase; }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div>
+          <h1>SPIDEY <span>CONSOLE</span></h1>
+          <p class="sub">Portfolio content admin</p>
+        </div>
+        <a class="back" href="/">&larr; BACK TO SITE</a>
+      </header>
+
+      <p class="note">
+        This console edits the values that live in <code>lib/data.ts</code>. Fill the form, hit
+        <strong>GENERATE</strong>, then copy or download the output and replace the matching exports in
+        <code>lib/data.ts</code>. Your entries are also kept in this browser's local storage, so the
+        form repopulates next time you open it. Nothing is uploaded anywhere.
+      </p>
+
+      <form id="form">
+        <fieldset>
+          <legend>Identity</legend>
+          <div class="grid two">
+            <div><label for="name">Display name</label><input id="name" value="SHADIN KAPPACHALI" /></div>
+            <div><label for="handle">Handle</label><input id="handle" value="Shadin_Kappzzz" /></div>
+            <div><label for="shortName">Card name</label><input id="shortName" value="SHADIN" /></div>
+            <div><label for="cardRole">Card role</label><input id="cardRole" value="Developer" /></div>
+            <div><label for="tagline">Nav tagline</label><input id="tagline" value="CS STUDENT &amp; DEVELOPER" /></div>
+            <div><label for="location">Location</label><input id="location" value="KERALA, INDIA" /></div>
+          </div>
+          <div style="margin-top: 1rem">
+            <label for="role1">Role line 1</label>
+            <input id="role1" value="FULL-STACK &amp; FLUTTER DEVELOPER • VIBE CODER (AI-PROMPT WEB DEV)" />
+          </div>
+          <div style="margin-top: 1rem">
+            <label for="role2">Role line 2</label>
+            <input id="role2" value="AI &amp; ROBOTICS TRAINER • B.TECH CS STUDENT (2ND YEAR)" />
+          </div>
+          <div style="margin-top: 1rem">
+            <label for="bio">Bio</label>
+            <textarea id="bio">A Computer Science student at KMCT Institute Of Emerging Technology and Management in Kerala with a Diploma in Computer Engineering. Passionate about software development, robotics, AI, and Vibe Coding—crafting full-stack web applications and digital platforms at ultra-high speed using advanced AI prompting &amp; modern workflows.</textarea>
+          </div>
+          <div style="margin-top: 1rem">
+            <label for="note">Hero note card</label>
+            <textarea id="note" style="min-height: 80px">Building intelligent web applications, AI face recognition IoT systems, and leading campus tech innovation.</textarea>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Contact &amp; Profiles</legend>
+          <div class="grid two">
+            <div><label for="email">Email</label><input id="email" value="mail4shadin@gmail.com" /></div>
+            <div><label for="resume">Resume path</label><input id="resume" value="/Shadin_Kappachali_CV.pdf" /></div>
+            <div><label for="instagram">Instagram URL</label><input id="instagram" value="https://instagram.com/shadin_kappzzz" /></div>
+            <div><label for="github">GitHub URL</label><input id="github" value="https://github.com/shadinkappachali" /></div>
+            <div><label for="linkedin">LinkedIn URL</label><input id="linkedin" value="https://linkedin.com/in/shadinkappachali" /></div>
+            <div><label for="lanyard">Lanyard ring text</label><input id="lanyard" value="AI • VISION • ROBOTICS • SOFTWARE • " /></div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Project links</legend>
+          <div id="projects"></div>
+        </fieldset>
+
+        <div class="actions">
+          <button type="button" class="primary" id="generate">Generate</button>
+          <button type="button" id="copy">Copy</button>
+          <button type="button" id="download">Download data snippet</button>
+          <button type="button" id="reset">Reset form</button>
+          <span class="ok" id="status" role="status" aria-live="polite"></span>
+        </div>
+      </form>
+
+      <pre id="output">// Press GENERATE to build your data.ts replacement block.</pre>
+    </div>
+
+    <script>
+      const PROJECTS = [
+        { key: 'pibots', title: 'PIBOTS ROBOTICS', href: '#' },
+        { key: 'nexq', title: 'NEXQ GLOBAL', href: '#' },
+        { key: 'roompulse', title: 'ROOMPULSE AI', href: '#' },
+        { key: 'hotwheels', title: 'HOT WHEELS 3D', href: '#' },
+      ];
+      const STORE = 'spidey-console-v1';
+
+      const projectsHost = document.getElementById('projects');
+      PROJECTS.forEach((p) => {
+        const box = document.createElement('div');
+        box.className = 'proj';
+        box.innerHTML =
+          '<h3>' + p.title + '</h3><label for="link-' + p.key + '">Live URL</label>' +
+          '<input id="link-' + p.key + '" value="' + p.href + '" placeholder="https://..." />';
+        projectsHost.appendChild(box);
+      });
+
+      const fields = Array.from(document.querySelectorAll('input, textarea'));
+      const status = document.getElementById('status');
+      const output = document.getElementById('output');
+
+      const say = (msg) => {
+        status.textContent = msg;
+        setTimeout(() => { status.textContent = ''; }, 2600);
+      };
+
+      // Restore any previously saved draft.
+      try {
+        const saved = JSON.parse(localStorage.getItem(STORE) || 'null');
+        if (saved) fields.forEach((f) => { if (saved[f.id] !== undefined) f.value = saved[f.id]; });
+      } catch (_) {}
+
+      const persist = () => {
+        const data = {};
+        fields.forEach((f) => { data[f.id] = f.value; });
+        try { localStorage.setItem(STORE, JSON.stringify(data)); } catch (_) {}
+        return data;
+      };
+      fields.forEach((f) => f.addEventListener('input', persist));
+
+      const val = (id) => document.getElementById(id).value.trim();
+      const esc = (s) => String(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+
+      const build = () => {
+        const links = PROJECTS.map(
+          (p) => "  " + p.key + ": '" + esc(val('link-' + p.key) || '#') + "',"
+        ).join('\n');
+
+        return [
+          "// ---- paste over the matching exports in lib/data.ts ----",
+          '',
+          'export const profile = {',
+          "  greeting: \"Hello, I'm\",",
+          "  name: '" + esc(val('name')) + "',",
+          "  handle: '" + esc(val('handle')) + "',",
+          "  shortName: '" + esc(val('shortName')) + "',",
+          "  cardRole: '" + esc(val('cardRole')) + "',",
+          "  tagline: '" + esc(val('tagline')) + "',",
+          '  roles: [',
+          "    '" + esc(val('role1')) + "',",
+          "    '" + esc(val('role2')) + "',",
+          '  ],',
+          "  bio: '" + esc(val('bio')) + "',",
+          "  note: '" + esc(val('note')) + "',",
+          "  location: '" + esc(val('location')) + "',",
+          "  email: '" + esc(val('email')) + "',",
+          "  resume: '" + esc(val('resume')) + "',",
+          "  lanyardText: '" + esc(val('lanyard')) + "',",
+          '  socials: {',
+          "    instagram: '" + esc(val('instagram')) + "',",
+          "    github: '" + esc(val('github')) + "',",
+          "    linkedin: '" + esc(val('linkedin')) + "',",
+          '  },',
+          '} as const;',
+          '',
+          '// Set each project\'s `href` in the `projects` array to:',
+          links,
+        ].join('\n');
+      };
+
+      document.getElementById('generate').addEventListener('click', () => {
+        persist();
+        output.textContent = build();
+        say('GENERATED');
+      });
+
+      document.getElementById('copy').addEventListener('click', async () => {
+        const text = output.textContent;
+        try {
+          await navigator.clipboard.writeText(text);
+          say('COPIED TO CLIPBOARD');
+        } catch (_) {
+          // Clipboard API needs a secure context; fall back to a selection.
+          const range = document.createRange();
+          range.selectNodeContents(output);
+          const sel = window.getSelection();
+          sel.removeAllRanges();
+          sel.addRange(range);
+          say('SELECTED — PRESS CTRL/CMD+C');
+        }
+      });
+
+      document.getElementById('download').addEventListener('click', () => {
+        const blob = new Blob([output.textContent], { type: 'text/plain' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'data-snippet.ts';
+        a.click();
+        URL.revokeObjectURL(a.href);
+        say('DOWNLOADED');
+      });
+
+      document.getElementById('reset').addEventListener('click', () => {
+        localStorage.removeItem(STORE);
+        location.reload();
+      });
+    </script>
+  </body>
+</html>
