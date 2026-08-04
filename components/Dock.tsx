@@ -2,11 +2,10 @@
 
 import { motion, useReducedMotion } from 'framer-motion';
 import { profile } from '@/lib/data';
-import { GithubIcon, GlobeIcon, InstagramIcon, TerminalIcon } from './Icons';
+import { GlobeIcon, InstagramIcon, TerminalIcon } from './Icons';
 
 const items = [
   { label: 'Instagram', href: profile.socials.instagram, Icon: InstagramIcon, external: true },
-  { label: 'GitHub', href: profile.socials.github, Icon: GithubIcon, external: true },
   { label: 'Website', href: profile.socials.website, Icon: GlobeIcon, external: true },
 ];
 

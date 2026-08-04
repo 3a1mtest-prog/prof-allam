@@ -54,13 +54,12 @@ export default function Instagram() {
               Instagram
             </h2>
             <p className="display mt-7 text-[2.6rem] leading-[0.92] text-bone sm:text-6xl">
-              Off the stage,
+              {instagram.heading[0]}
               <br />
-              <span className="text-crimson">on the feed.</span>
+              <span className="text-crimson">{instagram.heading[1]}</span>
             </p>
             <p className="mt-6 max-w-md text-[0.95rem] leading-relaxed text-ash">
-              The builds, the drops, and the behind the scenes. One tap on the card and
-              you are in.
+              {instagram.body}
             </p>
             <span className="glass mt-8 inline-flex rounded-full px-5 py-3 text-[0.65rem] font-semibold tracking-[0.18em] text-bone">
               {instagram.followers} FOLLOWERS

@@ -11,9 +11,12 @@ export default function Services() {
         {services.map((service, i) => (
           <Reveal key={service.title} delay={i * 0.07}>
             <GlowCard as="li" className="h-full list-none p-6">
-              <span className="text-2xl" aria-hidden="true">
-                {service.icon}
-              </span>
+              <div className="flex items-baseline gap-3">
+                <span className="display text-2xl leading-none text-crimson/60">{service.n}</span>
+                <span className="text-xl" aria-hidden="true">
+                  {service.icon}
+                </span>
+              </div>
               <h3 className="mt-5 text-[0.7rem] font-bold uppercase leading-snug tracking-[0.13em] text-bone">
                 {service.title}
               </h3>

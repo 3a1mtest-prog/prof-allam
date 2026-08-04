@@ -46,19 +46,25 @@ processed from supplied originals — see [`source-media/`](source-media/) for
 those files and the exact recipe. Missing assets degrade gracefully: the site
 builds and renders correctly without any of them.
 
-## Still to fill in
+## Sourcing rule
 
-`lib/data.ts` has no real data for these, so they are intentionally blank
-rather than invented:
+**Every string in `lib/data.ts` comes from the owner's own portfolio**
+(`3a1mtest-prog/Allam`, deployed at allam.qd.je). Nothing is written or
+inferred. A previous revision violated this — it carried an authored bio, a
+skills grid derived from GitHub repo stacks, and projects read off the repo
+list — and all of it has been removed.
 
-- `profile.email` and `profile.resume` — the contact CTA falls back to
-  Instagram while `email` is empty.
-- No LinkedIn — the dock and contact list show Instagram, GitHub and the
-  personal site instead.
-- Education, work history, awards and certifications — those sections were
-  removed from `app/page.tsx`. Supply the content and they can be restored.
-- Project cards are typographic by design: there are no screenshots of these
-  builds on hand, and unrelated imagery would misrepresent the work.
+If you extend the site, source the copy. Don't fill a section by writing
+plausible text.
+
+Sections dropped for lack of source content: projects, skills, career
+objective, philosophy, education, work history, awards, community. The page is
+now Hero → What I Do → Reels → Instagram → Contact, mirroring the source
+portfolio's own structure.
+
+Still blank because the source portfolio doesn't publish them:
+`profile.email`, `profile.resume`. While `email` is empty the contact CTA
+falls back to Instagram.
 
 ## Backgrounds
 

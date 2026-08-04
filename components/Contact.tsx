@@ -15,9 +15,6 @@ export default function Contact() {
                   {contact.heading}
                   <SparkIcon className="h-7 w-7 shrink-0 text-crimson sm:h-9 sm:w-9" />
                 </h2>
-                <p className="mt-6 max-w-md text-[0.9rem] leading-relaxed text-ash">
-                  {contact.body}
-                </p>
                 <a
                   href={profile.socials.instagram}
                   target="_blank"
