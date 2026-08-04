@@ -109,13 +109,8 @@ export default function LanyardCard() {
                 />
               )}
             </div>
-            {/*
-              Crimson is confined to the edge: an inset glow hugging the
-              border plus a hairline ring. The photo itself stays untinted so
-              the face and suit read as they do in the original shot.
-            */}
-            <div className="pointer-events-none absolute inset-0 rounded-xl shadow-[inset_0_0_14px_2px_rgba(255,30,45,0.6),inset_0_0_38px_7px_rgba(140,15,24,0.32)]" />
-            <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-crimson/70" />
+            {/* Hairline only — the red now lives in the photo's own backdrop. */}
+            <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-white/10" />
           </div>
 
           <div className="mt-2.5 flex items-center justify-between rounded-lg bg-white/5 px-3 py-2">
