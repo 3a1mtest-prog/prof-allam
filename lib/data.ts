@@ -10,7 +10,6 @@ import type { MediaSource } from '@/components/Media';
 export const profile = {
   greeting: "Hello, I'm",
   name: 'ALLAM GHABEN',
-  nameArabic: 'علام غبن',
   handle: '_3a1m',
   shortName: 'ALLAM',
   cardRole: 'Engineer',
@@ -114,14 +113,6 @@ export const projects: Project[] = [
   },
   {
     n: '02',
-    title: 'غزاوي ستور — AL-GHAZAWE',
-    role: 'FULL-STACK DEVELOPER',
-    status: 'LIVE',
-    href: 'https://github.com/3a1mtest-prog/weballam',
-    stack: ['Next.js 16', 'TypeScript', 'Tailwind v4', 'Supabase'],
-  },
-  {
-    n: '03',
     title: 'HANI SELMI PORTFOLIO',
     role: 'WEB DEVELOPER — CLIENT BUILD',
     status: 'LIVE',
@@ -129,7 +120,7 @@ export const projects: Project[] = [
     stack: ['Next.js', 'Framer Motion', 'shadcn/ui'],
   },
   {
-    n: '04',
+    n: '03',
     title: 'GENERATIVE MEDIA REEL',
     role: 'DIRECTION & AI PIPELINE',
     status: 'ACTIVE',
@@ -164,7 +155,7 @@ export const skills: Skill[] = [
 export const objective = {
   quote:
     'Intelligent systems, end to end. Generative media, machine learning, automation, and agents — built to run in the real world, not just in a notebook.',
-  author: 'ALLAM GHABEN · علام غبن',
+  author: 'ALLAM GHABEN',
   authorRole: 'SOFTWARE ENGINEER',
 };
 

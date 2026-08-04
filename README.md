@@ -1,6 +1,6 @@
 # Allam Ghaben — Portfolio
 
-Personal portfolio of **Allam Ghaben · علام غبن** — software engineer working
+Personal portfolio of **Allam Ghaben** — software engineer working
 in generative media, machine learning, automation and agent systems.
 
 A cinematic single-page site in near-black (`#0a0404`) and deep crimson

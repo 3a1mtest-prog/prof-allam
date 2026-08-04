@@ -37,15 +37,6 @@ export default function Hero() {
             {profile.name}
           </motion.h1>
 
-          <motion.p
-            {...rise(0.16)}
-            className="relative mt-3 inline-block text-2xl text-bone/70 sm:text-3xl"
-            dir="rtl"
-            lang="ar"
-          >
-            {profile.nameArabic}
-          </motion.p>
-
           <motion.div {...rise(0.2)} className="relative mt-5 space-y-1">
             {profile.roles.map((role) => (
               <p

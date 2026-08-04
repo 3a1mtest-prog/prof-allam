@@ -36,7 +36,6 @@ export const metadata: Metadata = {
   description,
   keywords: [
     'Allam Ghaben',
-    'علام غبن',
     '_3a1m',
     'AI agents',
     'automation developer',

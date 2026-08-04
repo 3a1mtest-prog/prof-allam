@@ -29,7 +29,7 @@ export default function Projects() {
         }
       />
 
-      <ul className="grid gap-4 lg:grid-cols-2">
+      <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((project, i) => (
           <Reveal key={project.n} delay={(i % 2) * 0.1}>
             <GlowCard as="li" className="group h-full list-none">
