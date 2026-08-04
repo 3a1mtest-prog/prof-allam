@@ -114,5 +114,25 @@ public/spidey.html  admin console
 
 ## Deploy
 
-Push to GitHub and import the repo on Vercel — no configuration needed. Any
-Node host works via `npm run build && npm start`.
+Import the repo on Vercel. Framework detection handles the rest — there is no
+`vercel.json` and none is needed. Any Node host also works via
+`npm run build && npm start`.
+
+### Site URL
+
+`metadataBase` drives the absolute URLs in the OG/Twitter tags. It resolves in
+this order:
+
+1. `NEXT_PUBLIC_SITE_URL` — set this if you serve from a custom domain
+2. `VERCEL_PROJECT_PRODUCTION_URL` — used on production deployments
+3. `VERCEL_URL` — used on previews, so each preview describes itself
+4. `https://allam.qd.je` — local fallback
+
+So a plain Vercel import needs no env vars; add `NEXT_PUBLIC_SITE_URL` only
+once a custom domain is attached.
+
+### Weight
+
+`public/` is ~25MB, nearly all of it the reels. Each clip ships as VP9/WebM
+(offered first, ~3.5MB total) plus an H.264 MP4 fallback (~21MB) that only
+older iOS Safari actually downloads. Both are needed for full coverage.

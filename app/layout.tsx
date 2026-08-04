@@ -30,8 +30,27 @@ const caveat = Caveat({
 
 const description = profile.bio;
 
+/**
+ * Absolute base for OG/Twitter URLs.
+ *
+ * Hardcoding one domain breaks every other deployment: preview builds would
+ * advertise the production site's OG image and vice versa. Resolution order:
+ *   1. NEXT_PUBLIC_SITE_URL — explicit override, wins everywhere
+ *   2. VERCEL_PROJECT_PRODUCTION_URL — the stable production domain
+ *   3. VERCEL_URL — the per-deployment URL, so previews describe themselves
+ *   4. the custom domain, for local builds
+ */
+const vercelHost =
+  process.env.VERCEL_ENV === 'production'
+    ? process.env.VERCEL_PROJECT_PRODUCTION_URL
+    : process.env.VERCEL_URL;
+
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (vercelHost ? `https://${vercelHost}` : 'https://allam.qd.je');
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://allam.qd.je'),
+  metadataBase: new URL(siteUrl),
   title: `${profile.name} — Software Engineer, AI Agents & Automation`,
   description,
   keywords: [
@@ -55,6 +74,7 @@ export const metadata: Metadata = {
     title: `${profile.name} — ${profile.tagline}`,
     description,
   },
+  alternates: { canonical: '/' },
   robots: { index: true, follow: true },
 };
 
