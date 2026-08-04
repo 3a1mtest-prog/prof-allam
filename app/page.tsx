@@ -1,4 +1,3 @@
-import ScrollFrames from '@/components/ScrollFrames';
 import Nav from '@/components/Nav';
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
@@ -12,7 +11,6 @@ import Dock from '@/components/Dock';
 export default function Home() {
   return (
     <>
-      <ScrollFrames />
       <Nav />
       <main>
         <Hero />

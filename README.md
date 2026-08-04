@@ -34,15 +34,17 @@ and keeps a draft in your browser's local storage. Nothing is uploaded.
 | Path | What it's for | Status |
 | --- | --- | --- |
 | `public/assets/avatar.webp` | Portrait on the lanyard ID card | shipped |
+| `public/assets/hero-loop.mp4` + `hero-poster.jpg` | Crimson-graded clip behind the hero copy | shipped |
 | `public/assets/ig-avatar.jpg` | Instagram card avatar | shipped |
-| `public/assets/hero-cutout.webp` | Spare cutout portrait | shipped |
+| `public/assets/hero-cutout.webp` | Spare cutout portrait, currently unused | shipped |
 | `public/assets/reels/reel-{1,2,3}.mp4` | Reels section, with extracted `-poster.jpg` stills | shipped |
-| `public/assets/frames/frame_001…192.jpg` | Scroll-scrubbed background sequence — see [`frames/README.md`](public/assets/frames/README.md) | not supplied |
 | `public/CV.pdf` | Target of a "DOWNLOAD CV" button once `profile.resume` is set | not supplied |
 
-Media was carried over from the source portfolio at
-[allam.qd.je](https://allam.qd.je). Missing assets degrade gracefully — the
-site builds and renders correctly without them.
+The reels and the Instagram avatar came from the source portfolio at
+[allam.qd.je](https://allam.qd.je). The ID-card portrait and the hero clip were
+processed from supplied originals — see [`source-media/`](source-media/) for
+those files and the exact recipe. Missing assets degrade gracefully: the site
+builds and renders correctly without any of them.
 
 ## Still to fill in
 
@@ -58,16 +60,22 @@ rather than invented:
 - Project cards are typographic by design: there are no screenshots of these
   builds on hand, and unrelated imagery would misrepresent the work.
 
-## The scroll-frame background
+## Backgrounds
 
-`components/ScrollFrames.tsx` maps page scroll position onto a 192-frame image
-sequence drawn to a `<canvas>`. Inside `renderFrame()` a soft radial patch in
-`#0a0404` is painted over the bottom-right corner so a watermark burned into
-the source video blends away instead of hard-edging.
+The hero backdrop is `components/HeroBackdrop.tsx`: a full-bleed looping clip,
+colour-graded to the crimson palette **at encode time** rather than through CSS
+blend modes, so it renders identically in every browser. Layered gradients on
+top hold the headline and body copy at readable contrast. It pauses once the
+hero scrolls out of view and holds its poster frame under
+`prefers-reduced-motion`.
 
-The component probes `frame_001.jpg` on mount; if the folder is empty it never
-mounts the canvas and the page falls back to its CSS gradient backdrop. So the
-feature is strictly additive — populate the folder and it activates.
+`components/ScrollFrames.tsx` — the 192-frame scroll-scrubbed canvas from the
+original brief, with the radial watermark patch in `renderFrame()` — is still
+in the repo but **no longer mounted**, since the hero clip now does this job at
+a fraction of the bytes. It probed `frame_001.jpg` on every page load and 404'd
+because the sequence was never supplied. To bring it back: populate
+`public/assets/frames/` (see [its README](public/assets/frames/README.md)) and
+re-add `<ScrollFrames />` to `app/page.tsx`.
 
 ## Structure
 

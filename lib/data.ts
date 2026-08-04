@@ -183,12 +183,18 @@ export const instagram = {
   ],
 };
 
-export const gallery = [
+export type GalleryItem = {
+  title: string;
+  caption: string;
+  media: MediaSource;
+};
+
+export const gallery: GalleryItem[] = [
   {
     title: 'REEL 01',
     caption: 'From @_3a1m on Instagram',
     media: {
-      type: 'video' as const,
+      type: 'video',
       src: '/assets/reels/reel-1.mp4',
       poster: '/assets/reels/reel-1-poster.jpg',
     },
@@ -197,7 +203,7 @@ export const gallery = [
     title: 'REEL 02',
     caption: 'From @_3a1m on Instagram',
     media: {
-      type: 'video' as const,
+      type: 'video',
       src: '/assets/reels/reel-2.mp4',
       poster: '/assets/reels/reel-2-poster.jpg',
     },
@@ -206,7 +212,7 @@ export const gallery = [
     title: 'REEL 03',
     caption: 'From @_3a1m on Instagram',
     media: {
-      type: 'video' as const,
+      type: 'video',
       src: '/assets/reels/reel-3.mp4',
       poster: '/assets/reels/reel-3-poster.jpg',
     },

@@ -133,7 +133,7 @@
             <div><label for="resume">Resume path</label><input id="resume" value="" placeholder="/CV.pdf" /></div>
             <div><label for="instagram">Instagram URL</label><input id="instagram" value="https://www.instagram.com/_3a1m/" /></div>
             <div><label for="github">GitHub URL</label><input id="github" value="https://github.com/3a1mtest-prog" /></div>
-            <div><label for="linkedin">LinkedIn URL</label><input id="linkedin" value="" placeholder="https://linkedin.com/in/..." /></div>
+            <div><label for="website">Website URL</label><input id="website" value="https://allam.qd.je" /></div>
             <div><label for="lanyard">Lanyard ring text</label><input id="lanyard" value="AI • AGENTS • AUTOMATION • MEDIA • " /></div>
           </div>
         </fieldset>
@@ -224,13 +224,17 @@
           "  location: '" + esc(val('location')) + "',",
           "  email: '" + esc(val('email')) + "',",
           "  resume: '" + esc(val('resume')) + "',",
+          "  website: '" + esc(val('website')) + "',",
           "  lanyardText: '" + esc(val('lanyard')) + "',",
           '  socials: {',
           "    instagram: '" + esc(val('instagram')) + "',",
           "    github: '" + esc(val('github')) + "',",
-          "    linkedin: '" + esc(val('linkedin')) + "',",
+          "    website: '" + esc(val('website')) + "',",
           '  },',
           '} as const;',
+          '',
+          '// Leaving `email` empty makes the contact CTA fall back to Instagram.',
+          '// Set `resume` only once a CV file actually exists in /public.',
           '',
           '// Set each project\'s `href` in the `projects` array to:',
           links,

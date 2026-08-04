@@ -7,7 +7,7 @@ export default function Services() {
   return (
     <Section id="services">
       <SectionHead title="What I Do" />
-      <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+      <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {services.map((service, i) => (
           <Reveal key={service.title} delay={i * 0.07}>
             <GlowCard as="li" className="h-full list-none p-6">
