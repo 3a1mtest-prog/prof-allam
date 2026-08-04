@@ -127,7 +127,11 @@ body::after {
   position: relative;
   overflow: hidden;
   border-radius: 1rem;
-  background: linear-gradient(155deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.008));
+  /* Dark base under the sheen. The What I Do cards sit over the hero clip,
+     and a purely translucent panel loses its text against his lit t-shirt. */
+  background:
+    linear-gradient(155deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.01)),
+    rgba(10, 4, 4, 0.68);
   border: 1px solid var(--shell-border);
   transition:
     transform 0.5s var(--ease-silk),

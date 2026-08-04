@@ -47,18 +47,26 @@ export default function HeroBackdrop() {
         loop
         playsInline
         preload="metadata"
-        className="h-full w-full object-cover object-[64%_15%] opacity-80 sm:object-[70%_12%] lg:opacity-95"
+        className="h-full w-full object-cover object-[64%_top] opacity-80 sm:object-[70%_top] lg:opacity-95"
       >
         <source src="/assets/hero-loop.webm" type="video/webm" />
         <source src="/assets/hero-loop.mp4" type="video/mp4" />
       </video>
 
-      {/* Legibility stack. The subject sits right of centre, so the darkening
-          is weighted to the left where the copy is and released on the right
-          so he stays clearly visible. */}
+      {/*
+        Legibility stack, tuned for a container that spans the hero and the
+        What I Do grid. Anchoring the clip to the top lets his head sit in the
+        hero and the rest of his body carry on down behind the cards.
+
+        Horizontal: weighted left, where the hero copy sits, and released on
+        the right so he stays visible.
+        Vertical: light through the hero, deepening across the card grid so
+        the cards keep their contrast, then solid at the very bottom so the
+        section hands off cleanly to the next.
+      */}
       <div className="absolute inset-0 bg-gradient-to-r from-void via-void/60 to-transparent lg:via-void/40" />
-      <div className="absolute inset-0 bg-gradient-to-b from-void/70 via-transparent to-void" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_54%_56%_at_12%_50%,rgba(10,4,4,0.9),transparent_70%)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-void/70 via-transparent via-45% to-void" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_54%_38%_at_12%_34%,rgba(10,4,4,0.9),transparent_70%)]" />
     </div>
   );
 }
