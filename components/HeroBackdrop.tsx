@@ -47,17 +47,18 @@ export default function HeroBackdrop() {
         loop
         playsInline
         preload="metadata"
-        className="h-full w-full object-cover object-[64%_15%] opacity-60 sm:object-[70%_12%] lg:opacity-75"
+        className="h-full w-full object-cover object-[64%_15%] opacity-80 sm:object-[70%_12%] lg:opacity-95"
       >
         <source src="/assets/hero-loop.webm" type="video/webm" />
         <source src="/assets/hero-loop.mp4" type="video/mp4" />
       </video>
 
-      {/* Legibility stack: darken left-to-right under the copy, then fade the
-          whole thing into the page background at the edges. */}
-      <div className="absolute inset-0 bg-gradient-to-r from-void via-void/80 to-void/25 lg:via-void/60" />
-      <div className="absolute inset-0 bg-gradient-to-b from-void via-transparent to-void" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_62%_58%_at_16%_48%,rgba(10,4,4,0.94),transparent_72%)]" />
+      {/* Legibility stack. The subject sits right of centre, so the darkening
+          is weighted to the left where the copy is and released on the right
+          so he stays clearly visible. */}
+      <div className="absolute inset-0 bg-gradient-to-r from-void via-void/60 to-transparent lg:via-void/40" />
+      <div className="absolute inset-0 bg-gradient-to-b from-void/70 via-transparent to-void" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_54%_56%_at_12%_50%,rgba(10,4,4,0.9),transparent_70%)]" />
     </div>
   );
 }
