@@ -41,14 +41,17 @@ export default function HeroBackdrop() {
     <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
       <video
         ref={videoRef}
-        src="/assets/hero-loop.mp4"
         poster="/assets/hero-poster.jpg"
+        autoPlay
         muted
         loop
         playsInline
         preload="metadata"
         className="h-full w-full object-cover object-[64%_15%] opacity-60 sm:object-[70%_12%] lg:opacity-75"
-      />
+      >
+        <source src="/assets/hero-loop.webm" type="video/webm" />
+        <source src="/assets/hero-loop.mp4" type="video/mp4" />
+      </video>
 
       {/* Legibility stack: darken left-to-right under the copy, then fade the
           whole thing into the page background at the edges. */}

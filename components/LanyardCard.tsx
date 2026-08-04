@@ -56,8 +56,8 @@ export default function LanyardCard() {
               fill="none"
             />
           </defs>
-          <text className="mono fill-ash text-[8.5px] tracking-[0.34em] uppercase">
-            <textPath href="#lanyard-ring">{profile.lanyardText.repeat(2)}</textPath>
+          <text className="mono fill-ash text-[6.5px] tracking-[0.2em] uppercase">
+            <textPath href="#lanyard-ring">{profile.lanyardText}</textPath>
           </text>
         </svg>
       </div>

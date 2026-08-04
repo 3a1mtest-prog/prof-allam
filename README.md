@@ -34,10 +34,10 @@ and keeps a draft in your browser's local storage. Nothing is uploaded.
 | Path | What it's for | Status |
 | --- | --- | --- |
 | `public/assets/avatar.webp` | Portrait on the lanyard ID card | shipped |
-| `public/assets/hero-loop.mp4` + `hero-poster.jpg` | Crimson-graded clip behind the hero copy | shipped |
+| `public/assets/hero-loop.{webm,mp4}` + `hero-poster.jpg` | Crimson-graded clip behind the hero copy | shipped |
 | `public/assets/ig-avatar.jpg` | Instagram card avatar | shipped |
 | `public/assets/hero-cutout.webp` | Spare cutout portrait, currently unused | shipped |
-| `public/assets/reels/reel-{1,2,3}.mp4` | Reels section, with extracted `-poster.jpg` stills | shipped |
+| `public/assets/reels/reel-{1,2,3}.{webm,mp4}` | Reels section, with extracted `-poster.jpg` stills | shipped |
 | `public/CV.pdf` | Target of a "DOWNLOAD CV" button once `profile.resume` is set | not supplied |
 
 The reels and the Instagram avatar came from the source portfolio at
@@ -65,6 +65,14 @@ portfolio's own structure.
 Still blank because the source portfolio doesn't publish them:
 `profile.email`, `profile.resume`. While `email` is empty the contact CTA
 falls back to Instagram.
+
+## Video encoding
+
+Every clip ships twice: **VP9/WebM offered first, H.264/MP4 as fallback**.
+That is not only for coverage — open Chromium builds (including the one used
+to verify this site) cannot decode H.264 at all, so with MP4 alone playback
+was literally unverifiable. VP9 is also far smaller here: the three reels drop
+from 21MB to 3.5MB.
 
 ## Backgrounds
 

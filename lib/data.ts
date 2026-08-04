@@ -110,6 +110,7 @@ export const gallery: GalleryItem[] = [
     media: {
       type: 'video',
       src: '/assets/reels/reel-1.mp4',
+      webm: '/assets/reels/reel-1.webm',
       poster: '/assets/reels/reel-1-poster.jpg',
     },
   },
@@ -119,6 +120,7 @@ export const gallery: GalleryItem[] = [
     media: {
       type: 'video',
       src: '/assets/reels/reel-2.mp4',
+      webm: '/assets/reels/reel-2.webm',
       poster: '/assets/reels/reel-2-poster.jpg',
     },
   },
@@ -128,6 +130,7 @@ export const gallery: GalleryItem[] = [
     media: {
       type: 'video',
       src: '/assets/reels/reel-3.mp4',
+      webm: '/assets/reels/reel-3.webm',
       poster: '/assets/reels/reel-3-poster.jpg',
     },
   },
