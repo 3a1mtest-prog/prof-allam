@@ -1,0 +1,256 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------ */
+/*  Design tokens — cinematic black + crimson                          */
+/* ------------------------------------------------------------------ */
+@theme {
+  --color-void: #0a0404;
+  --color-ink: #120707;
+  --color-shell: #1a0c0c;
+  --color-crimson: #ff1e2d;
+  --color-crimson-soft: #ff5c66;
+  --color-crimson-deep: #8c0f18;
+  --color-bone: #f2e9e9;
+  --color-ash: #a89a9a;
+  --color-dust: #6d5f5f;
+
+  --font-display: var(--font-bebas), 'Impact', sans-serif;
+  --font-body: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-fira), ui-monospace, monospace;
+  --font-hand: var(--font-caveat), cursive;
+
+  --ease-silk: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root {
+  color-scheme: dark;
+  --shell-border: rgba(255, 255, 255, 0.06);
+  --shell-fill: rgba(255, 255, 255, 0.022);
+}
+
+/* The design is a committed single-look dark editorial piece. A light
+   theme would break the cinematic premise, so we hold the dark palette
+   in both schemes rather than inverting into something unrecognisable. */
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: dark;
+  }
+}
+
+* {
+  border-color: var(--shell-border);
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Nav pill clearance for anchor jumps */
+  scroll-padding-top: 7rem;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: var(--color-void);
+  color: var(--color-bone);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  overflow-x: hidden;
+  /* Warm vignette so the page never reads as flat #000 */
+  background-image:
+    radial-gradient(ellipse 90% 55% at 50% -8%, rgba(255, 30, 45, 0.13), transparent 62%),
+    radial-gradient(ellipse 70% 50% at 100% 8%, rgba(140, 15, 24, 0.16), transparent 60%);
+  background-attachment: fixed;
+}
+
+::selection {
+  background: var(--color-crimson);
+  color: #fff;
+}
+
+/* Film-grain overlay: keeps large dark fields from banding */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ------------------------------------------------------------------ */
+/*  Typography primitives                                              */
+/* ------------------------------------------------------------------ */
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 0.86;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}
+
+.hand {
+  font-family: var(--font-hand);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Surfaces                                                           */
+/* ------------------------------------------------------------------ */
+.glass {
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.012));
+  border: 1px solid var(--shell-border);
+  backdrop-filter: blur(18px) saturate(130%);
+  -webkit-backdrop-filter: blur(18px) saturate(130%);
+}
+
+/* Hover treatment shared by every card in the page */
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.008));
+  border: 1px solid var(--shell-border);
+  transition:
+    transform 0.5s var(--ease-silk),
+    border-color 0.4s ease,
+    box-shadow 0.5s ease;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgba(255, 30, 45, 0.16), transparent 60%);
+  pointer-events: none;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 30, 45, 0.42);
+  box-shadow:
+    0 24px 60px -20px rgba(0, 0, 0, 0.9),
+    0 0 0 1px rgba(255, 30, 45, 0.08),
+    0 0 46px -14px rgba(255, 30, 45, 0.4);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* Thin crimson rule that draws itself in on section entry */
+.rule {
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-crimson), rgba(255, 30, 45, 0.05) 70%, transparent);
+}
+
+.glow-text {
+  text-shadow: 0 0 32px rgba(255, 30, 45, 0.55);
+}
+
+/* ------------------------------------------------------------------ */
+/*  macOS-style dock                                                   */
+/* ------------------------------------------------------------------ */
+.glass-dock {
+  background: rgba(16, 8, 8, 0.62);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(26px) saturate(160%);
+  -webkit-backdrop-filter: blur(26px) saturate(160%);
+  box-shadow:
+    0 20px 50px -12px rgba(0, 0, 0, 0.85),
+    inset 0 1px 0 rgba(255, 255, 255, 0.09);
+}
+
+.dock-item {
+  transition:
+    transform 0.32s var(--ease-silk),
+    background-color 0.3s ease;
+}
+
+.dock-item:hover {
+  transform: translateY(-9px) scale(1.14);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Marquee ring on the lanyard                                        */
+/* ------------------------------------------------------------------ */
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin-slow {
+  animation: spin-slow 22s linear infinite;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(255, 30, 45, 0.55);
+  }
+  50% {
+    opacity: 0.55;
+    box-shadow: 0 0 0 6px rgba(255, 30, 45, 0);
+  }
+}
+
+.pulse-dot {
+  animation: pulse-dot 2.2s ease-in-out infinite;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Scrollbar                                                          */
+/* ------------------------------------------------------------------ */
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0404;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--color-crimson-deep), #3a0509);
+  border-radius: 9px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-crimson);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Accessibility                                                      */
+/* ------------------------------------------------------------------ */
+:where(a, button, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-crimson);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
