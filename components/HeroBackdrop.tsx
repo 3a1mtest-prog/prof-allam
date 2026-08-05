@@ -39,19 +39,35 @@ export default function HeroBackdrop() {
 
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-      <video
-        ref={videoRef}
-        poster="/assets/hero-poster.jpg"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        className="h-full w-full object-cover object-[64%_top] opacity-80 sm:object-[70%_top] lg:opacity-95"
-      >
-        <source src="/assets/hero-loop.webm" type="video/webm" />
-        <source src="/assets/hero-loop.mp4" type="video/mp4" />
-      </video>
+      {/*
+        The clip's own red backdrop, continued across the whole container as a
+        gradient. Filling the container with the video instead would scale it
+        ~1.5x and push him right up against the viewer; here he can sit at his
+        own size inside a much larger field.
+      */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_78%_46%_at_62%_20%,#7d0f18_0%,#3a070c_46%,#14050700_78%)]" />
+
+      {/* Sized box rather than full-bleed, so he reads as standing further back
+          — roughly 60% of the scale a full-bleed cover would force. Offset from
+          the top so his head clears the floating nav, and tall enough that his
+          lower body still runs behind the What I Do cards. */}
+      <div className="absolute inset-x-0 top-[12%] bottom-0">
+        <video
+          ref={videoRef}
+          poster="/assets/hero-poster.jpg"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          /* Feathered on every edge so the clip's rectangle dissolves into the
+             gradient behind it instead of showing a hard border. */
+          className="h-[60%] w-full object-contain object-[56%_top] opacity-70 [mask-image:radial-gradient(ellipse_64%_64%_at_56%_44%,#000_50%,transparent_100%)] [mask-mode:alpha] sm:h-[66%] lg:h-[72%] lg:opacity-80"
+        >
+          <source src="/assets/hero-loop.webm" type="video/webm" />
+          <source src="/assets/hero-loop.mp4" type="video/mp4" />
+        </video>
+      </div>
 
       {/*
         Legibility stack, tuned for a container that spans the hero and the
