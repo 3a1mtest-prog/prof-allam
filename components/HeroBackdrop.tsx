@@ -44,14 +44,19 @@ export default function HeroBackdrop() {
         gradient. Filling the container with the video instead would scale it
         ~1.5x and push him right up against the viewer; here he can sit at his
         own size inside a much larger field.
+
+        The stops are matched to the clip's own falloff. If this gradient is
+        darker than the footage where the mask hands over, the difference in
+        brightness reads as a rectangular seam around the video.
       */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_78%_46%_at_62%_20%,#7d0f18_0%,#3a070c_46%,#14050700_78%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_100%_78%_at_57%_24%,#8c1119_0%,#5d0c14_30%,#2c060b_58%,#0a040400_82%)]" />
 
       {/* Sized box rather than full-bleed, so he reads as standing further back
-          — roughly 60% of the scale a full-bleed cover would force. Offset from
-          the top so his head clears the floating nav, and tall enough that his
-          lower body still runs behind the What I Do cards. */}
-      <div className="absolute inset-x-0 top-[12%] bottom-0">
+          — about 80% of the scale a full-bleed cover would force, which keeps
+          him prominent the way the reference hero is without pressing him into
+          the viewer. Offset from the top so his head clears the floating nav,
+          and full height so his lower body runs behind the What I Do cards. */}
+      <div className="absolute inset-x-0 top-[5%] h-full sm:top-[6%]">
         <video
           ref={videoRef}
           poster="/assets/hero-poster.jpg"
@@ -62,7 +67,7 @@ export default function HeroBackdrop() {
           preload="metadata"
           /* Feathered on every edge so the clip's rectangle dissolves into the
              gradient behind it instead of showing a hard border. */
-          className="h-[60%] w-full object-contain object-[56%_top] opacity-70 [mask-image:radial-gradient(ellipse_64%_64%_at_56%_44%,#000_50%,transparent_100%)] [mask-mode:alpha] sm:h-[66%] lg:h-[72%] lg:opacity-80"
+          className="h-full w-full object-contain object-[56%_top] opacity-80 [mask-image:radial-gradient(ellipse_82%_80%_at_56%_42%,#000_40%,transparent_100%)] [mask-mode:alpha] lg:opacity-95"
         >
           <source src="/assets/hero-loop.webm" type="video/webm" />
           <source src="/assets/hero-loop.mp4" type="video/mp4" />
