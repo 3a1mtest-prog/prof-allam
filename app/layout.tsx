@@ -78,6 +78,20 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
+/**
+ * Build stamp, emitted into the page head.
+ *
+ * A deployed page that doesn't match the repo has only a few causes — a stale
+ * deployment, a different production branch, or a different project entirely —
+ * and they are indistinguishable from the outside. This makes them
+ * distinguishable: view-source on the live site says which commit built it.
+ */
+const buildStamp = {
+  commit: (process.env.VERCEL_GIT_COMMIT_SHA ?? 'local').slice(0, 7),
+  branch: process.env.VERCEL_GIT_COMMIT_REF ?? 'local',
+  env: process.env.VERCEL_ENV ?? 'local',
+};
+
 export const viewport: Viewport = {
   themeColor: '#0a0404',
   width: 'device-width',
@@ -90,6 +104,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       className={`${outfit.variable} ${bebas.variable} ${fira.variable} ${caveat.variable}`}
     >
+      <head>
+        <meta
+          name="x-build"
+          content={`${buildStamp.commit} · ${buildStamp.branch} · ${buildStamp.env}`}
+        />
+      </head>
       <body>{children}</body>
     </html>
   );
