@@ -11,7 +11,7 @@ export function SectionHead({
   return (
     <Reveal>
       <div className="mb-10 flex flex-wrap items-end justify-between gap-4 sm:mb-14">
-        <h2 className="eyebrow flex items-center gap-3 text-bone">
+        <h2 className="eyebrow on-video flex items-center gap-3 text-bone">
           <span className="h-2 w-2 shrink-0 bg-crimson" aria-hidden="true" />
           {title}
         </h2>

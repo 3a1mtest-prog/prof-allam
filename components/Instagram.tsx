@@ -49,16 +49,16 @@ export default function Instagram() {
       <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
         <Reveal>
           <div>
-            <h2 className="eyebrow flex items-center gap-3 text-bone">
+            <h2 className="eyebrow on-video flex items-center gap-3 text-bone">
               <span className="h-2 w-2 shrink-0 bg-crimson" aria-hidden="true" />
               Instagram
             </h2>
-            <p className="display mt-7 text-[2.6rem] leading-[0.92] text-bone sm:text-6xl">
+            <p className="display on-video mt-7 text-[2.6rem] leading-[0.92] text-bone sm:text-6xl">
               {instagram.heading[0]}
               <br />
               <span className="text-crimson">{instagram.heading[1]}</span>
             </p>
-            <p className="mt-6 max-w-md text-[0.95rem] leading-relaxed text-ash">
+            <p className="on-video mt-6 max-w-md text-[0.95rem] leading-relaxed text-ash">
               {instagram.body}
             </p>
             <span className="glass mt-8 inline-flex rounded-full px-5 py-3 text-[0.65rem] font-semibold tracking-[0.18em] text-bone">

@@ -17,14 +17,16 @@ export default function Home() {
         <Hero />
         <Services />
         {/*
-          Past the hero the clip should recede rather than compete: these
-          sections sit on a translucent panel, so it still shows through but
-          the copy keeps its contrast.
+          No panel over the clip. An earlier revision dimmed these sections with
+          a translucent sheet, which drew a hard horizontal line straight across
+          him wherever the sheet began — the clip read as a rectangle sitting
+          behind the page instead of as the page's own backdrop.
+          Contrast is handled per element instead: cards carry their own dark
+          base, and loose copy gets a halo (.on-video), both of which fade out
+          with no edge.
         */}
-        <div className="relative bg-void/80 backdrop-blur-[2px]">
-          <Gallery />
-          <Instagram />
-        </div>
+        <Gallery />
+        <Instagram />
       </main>
       <Contact />
       <Dock />

@@ -106,17 +106,19 @@ export default function Hero() {
 
           <motion.dl
             {...rise(0.58)}
-            /* A soft wash rather than a card: the reference sets these figures
-               straight on its background, but here they sit over his lit
-               t-shirt and the small labels lose contrast without it. */
-            className="-mx-4 max-w-sm space-y-5 rounded-2xl bg-[linear-gradient(90deg,rgba(25,10,12,0.88),rgba(25,10,12,0.6)_62%,transparent)] px-4 py-4"
+            /* Straight on the backdrop, the way the reference sets its figures.
+               The wash that used to sit under them read as a rectangle over his
+               shoulder; the halo on the glyphs carries the contrast instead. */
+            className="max-w-sm space-y-5"
           >
             {stats.map((stat) => (
               <div key={stat.value} className="flex items-center gap-5">
                 <dt className="display glow-text w-32 shrink-0 text-[2.4rem] leading-none text-crimson sm:text-[2.9rem]">
                   {stat.value}
                 </dt>
-                <dd className="whitespace-pre-line text-[0.62rem] font-semibold uppercase leading-[1.6] tracking-[0.16em] text-ash">
+                {/* Bone rather than ash: these labels land on the brightest part
+                    of the clip, his white t-shirt, where ash all but vanishes. */}
+                <dd className="on-video whitespace-pre-line text-[0.62rem] font-semibold uppercase leading-[1.6] tracking-[0.16em] text-bone/95">
                   {stat.label}
                 </dd>
               </div>
