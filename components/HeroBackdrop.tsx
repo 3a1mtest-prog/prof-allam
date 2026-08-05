@@ -39,18 +39,6 @@ export default function HeroBackdrop() {
 
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-      {/*
-        The clip's own red backdrop, continued across the whole container as a
-        gradient. Filling the container with the video instead would scale it
-        ~1.5x and push him right up against the viewer; here he can sit at his
-        own size inside a much larger field.
-
-        The stops are matched to the clip's own falloff. If this gradient is
-        darker than the footage where the mask hands over, the difference in
-        brightness reads as a rectangular seam around the video.
-      */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_100%_78%_at_57%_24%,#8c1119_0%,#5d0c14_30%,#2c060b_58%,#0a040400_82%)]" />
-
       {/* Sized box rather than full-bleed, so he reads as standing further back
           — about 80% of the scale a full-bleed cover would force, which keeps
           him prominent the way the reference hero is without pressing him into
@@ -65,9 +53,11 @@ export default function HeroBackdrop() {
           loop
           playsInline
           preload="metadata"
-          /* Feathered on every edge so the clip's rectangle dissolves into the
-             gradient behind it instead of showing a hard border. */
-          className="h-full w-full object-contain object-[56%_top] opacity-80 [mask-image:radial-gradient(ellipse_82%_80%_at_56%_42%,#000_40%,transparent_100%)] [mask-mode:alpha] lg:opacity-95"
+          /* Feathered to nothing well inside its own frame, so the clip's red
+             backdrop falls away into the page's black instead of ending on a
+             rectangle. Full opacity: he should read as the lit subject on a
+             dark page, not something seen through a red wash. */
+          className="h-full w-full object-contain object-[56%_top] [mask-image:radial-gradient(ellipse_58%_62%_at_56%_44%,#000_28%,transparent_88%)] [mask-mode:alpha]"
         >
           <source src="/assets/hero-loop.webm" type="video/webm" />
           <source src="/assets/hero-loop.mp4" type="video/mp4" />
@@ -85,9 +75,9 @@ export default function HeroBackdrop() {
         the cards keep their contrast, then solid at the very bottom so the
         section hands off cleanly to the next.
       */}
-      <div className="absolute inset-0 bg-gradient-to-r from-void via-void/60 to-transparent lg:via-void/40" />
-      <div className="absolute inset-0 bg-gradient-to-b from-void/70 via-transparent via-45% to-void" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_54%_38%_at_12%_34%,rgba(10,4,4,0.9),transparent_70%)]" />
+      <div className="absolute inset-0 bg-gradient-to-r from-void from-2% via-void/40 via-42% to-transparent to-78% lg:via-void/25" />
+      <div className="absolute inset-0 bg-gradient-to-b from-void/55 via-transparent via-40% to-void" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_46%_34%_at_8%_34%,rgba(10,4,4,0.92),transparent_72%)]" />
     </div>
   );
 }
