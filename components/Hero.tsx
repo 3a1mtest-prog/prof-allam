@@ -24,6 +24,15 @@ export default function Hero() {
       <div className="relative mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-8">
         {/* ---------------- Left: identity ---------------- */}
         <div className="relative">
+          {/* Oversized ghost wordmark bleeding out behind the headline, the way
+              the reference hero carries the name a second time. */}
+          <span
+            aria-hidden="true"
+            className="display pointer-events-none absolute -top-4 left-24 select-none text-[24vw] leading-none text-crimson/[0.09] sm:left-40 lg:left-64 lg:text-[13rem]"
+          >
+            {profile.shortName}
+          </span>
+
           <motion.p {...rise(0.05)} className="hand relative text-3xl text-bone/90 sm:text-4xl">
             {profile.greeting}
           </motion.p>

@@ -4,9 +4,9 @@
 /*  Design tokens — cinematic black + crimson                          */
 /* ------------------------------------------------------------------ */
 @theme {
-  --color-void: #0a0404;
-  --color-ink: #120707;
-  --color-shell: #1a0c0c;
+  --color-void: #190a0c;
+  --color-ink: #200e10;
+  --color-shell: #2a1214;
   --color-crimson: #ff1e2d;
   --color-crimson-soft: #ff5c66;
   --color-crimson-deep: #8c0f18;
@@ -57,8 +57,8 @@ body {
   overflow-x: hidden;
   /* Warm vignette so the page never reads as flat #000 */
   background-image:
-    radial-gradient(ellipse 90% 55% at 50% -8%, rgba(255, 30, 45, 0.13), transparent 62%),
-    radial-gradient(ellipse 70% 50% at 100% 8%, rgba(140, 15, 24, 0.16), transparent 60%);
+    radial-gradient(ellipse 120% 60% at 50% -10%, rgba(120, 26, 32, 0.55), transparent 65%),
+    radial-gradient(ellipse 80% 45% at 100% 4%, rgba(150, 22, 34, 0.28), transparent 62%);
   background-attachment: fixed;
 }
 
@@ -231,7 +231,7 @@ body::after {
   width: 9px;
 }
 ::-webkit-scrollbar-track {
-  background: #0a0404;
+  background: #190a0c;
 }
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(var(--color-crimson-deep), #3a0509);
