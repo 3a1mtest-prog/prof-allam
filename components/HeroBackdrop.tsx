@@ -44,7 +44,7 @@ export default function HeroBackdrop() {
           him prominent the way the reference hero is without pressing him into
           the viewer. Offset from the top so his head clears the floating nav,
           and full height so his lower body runs behind the What I Do cards. */}
-      <div className="absolute inset-x-0 top-[5%] h-full sm:top-[6%]">
+      <div className="absolute left-1/2 top-[5%] aspect-[3/4] h-full -translate-x-1/2 sm:top-[6%]">
         <video
           ref={videoRef}
           poster="/assets/hero-poster.jpg"
@@ -53,11 +53,10 @@ export default function HeroBackdrop() {
           loop
           playsInline
           preload="metadata"
-          /* Feathered to nothing well inside its own frame, so the clip's red
-             backdrop falls away into the page's black instead of ending on a
-             rectangle. Full opacity: he should read as the lit subject on a
-             dark page, not something seen through a red wash. */
-          className="h-full w-full object-contain object-[56%_top] [mask-image:radial-gradient(ellipse_58%_62%_at_56%_44%,#000_28%,transparent_88%)] [mask-mode:alpha]"
+          /* The box carries the frame's own 3:4 ratio and the video covers it
+             exactly, so .video-blend's feather lands on the real frame edge
+             rather than on letterbox padding. */
+          className="video-blend h-full w-full object-cover object-top"
         >
           <source src="/assets/hero-loop.webm" type="video/webm" />
           <source src="/assets/hero-loop.mp4" type="video/mp4" />

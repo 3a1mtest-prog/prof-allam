@@ -314,3 +314,30 @@ body::after {
   border-radius: 999px;
   padding: 0.3rem 0.7rem;
 }
+
+/* ------------------------------------------------------------------ */
+/*  Video edge feather — the source portfolio's own .video-blend       */
+/* ------------------------------------------------------------------ */
+/*
+ * Two linear masks intersected, so the middle of the frame stays fully
+ * opaque and only the outer band dissolves.
+ *
+ * A radial mask cannot do this job: the subject fills the centre of the
+ * frame, so any radius tight enough to reach zero before the frame edge
+ * also fades him. This keeps him at full opacity and only eats the border.
+ *
+ * The element it is applied to must be the same size as the painted video
+ * (aspect-ratio box + object-cover). With object-contain the element is
+ * wider than the frame, the mask fades against the element edge instead of
+ * the frame edge, and the frame's own border stays visible.
+ */
+.video-blend {
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, #000 16%, #000 84%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 11%, #000 92%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 0%, #000 16%, #000 84%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 11%, #000 92%, transparent 100%);
+  mask-composite: intersect;
+}
