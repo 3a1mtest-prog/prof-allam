@@ -1,6 +1,6 @@
 import Nav from '@/components/Nav';
 import Hero from '@/components/Hero';
-import HeroBackdrop from '@/components/HeroBackdrop';
+import HeroStage from '@/components/HeroStage';
 import Services from '@/components/Services';
 import Gallery from '@/components/Gallery';
 import Instagram from '@/components/Instagram';
@@ -12,13 +12,12 @@ export default function Home() {
     <>
       <Nav />
       <main>
-        {/* One backdrop behind both, so the figure runs from the hero
-            straight down through the What I Do grid. */}
-        <div className="relative overflow-hidden">
-          <HeroBackdrop />
+        {/* The clip is pinned across both sections and scrubbed by scroll,
+            so moving down the page walks through the footage. */}
+        <HeroStage>
           <Hero />
           <Services />
-        </div>
+        </HeroStage>
         <Gallery />
         <Instagram />
       </main>

@@ -3,80 +3,116 @@
 import { useEffect, useRef } from 'react';
 
 /**
- * Full-bleed crimson-graded portrait loop sitting behind the hero copy.
+ * Scroll-scrubbed hero backdrop.
  *
- * The clip is colour-graded to the site palette at encode time rather than via
- * CSS blend modes, so it renders identically everywhere. Layered gradients on
- * top keep the headline and body text at readable contrast over it.
+ * The clip is pinned to the viewport while the section scrolls past it, and
+ * scroll position drives `currentTime` rather than the clip playing on its
+ * own. Scrolling down walks through the footage; stopping holds a frame.
+ *
+ * This is the effect the original brief described as a 192-frame canvas
+ * sequence. Driving one short clip does the same job for ~500KB instead of
+ * ~15MB of stills, and seeks stay cheap because the file is small and fully
+ * buffered before scrubbing starts.
+ *
+ * Full-bleed `object-cover` also means the frame always fills the viewport,
+ * so there are no clip edges to feather — the visible rectangle in earlier
+ * revisions came from the frame being smaller than the element holding it.
  */
-export default function HeroBackdrop() {
+export default function HeroBackdrop({
+  scrollRef,
+}: {
+  /** The element whose scroll span maps onto the clip's duration. */
+  scrollRef: React.RefObject<HTMLDivElement | null>;
+}) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    const el = videoRef.current;
-    if (!el) return;
+    const video = videoRef.current;
+    const track = scrollRef.current;
+    if (!video || !track) return;
 
-    // Hold the poster frame for anyone who asked for less motion.
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    // Scrubbing is motion the user did not ask for; hold the poster instead.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      video.pause();
+      return;
+    }
 
-    // Pause once the hero has scrolled away — nothing to show, no reason to decode.
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          el.play().catch(() => {
-            /* autoplay refused — the poster stays up */
-          });
-        } else {
-          el.pause();
-        }
-      },
-      { threshold: 0.05 },
-    );
+    let raf = 0;
+    let target = 0;
+    let eased = 0;
+    let ready = false;
 
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
+    const onLoaded = () => {
+      ready = Number.isFinite(video.duration) && video.duration > 0;
+    };
+
+    const measure = () => {
+      const rect = track.getBoundingClientRect();
+      // Span is the stage's own height, not height-minus-viewport. The sticky
+      // child is pulled out of the flow by a negative margin, so it stays
+      // pinned for the stage's full travel rather than unpinning a viewport
+      // early — measuring it the usual way finished the scrub less than
+      // halfway down and left the clip frozen for the rest of the section.
+      const span = rect.height;
+      const progress = span > 0 ? Math.min(1, Math.max(0, -rect.top / span)) : 0;
+      target = progress * (video.duration || 0);
+    };
+
+    const tick = () => {
+      raf = requestAnimationFrame(tick);
+      if (!ready) return;
+      // Ease toward the target so a flick of the wheel doesn't snap the frame.
+      eased += (target - eased) * 0.12;
+      if (Math.abs(video.currentTime - eased) > 0.015) {
+        // fastSeek trades exact-frame accuracy for a much cheaper seek.
+        if (typeof video.fastSeek === 'function') video.fastSeek(eased);
+        else video.currentTime = eased;
+      }
+    };
+
+    video.pause();
+    video.addEventListener('loadedmetadata', onLoaded);
+    if (video.readyState >= 1) onLoaded();
+
+    measure();
+    window.addEventListener('scroll', measure, { passive: true });
+    window.addEventListener('resize', measure);
+    raf = requestAnimationFrame(tick);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      video.removeEventListener('loadedmetadata', onLoaded);
+      window.removeEventListener('scroll', measure);
+      window.removeEventListener('resize', measure);
+    };
+  }, [scrollRef]);
 
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-      {/* Sized box rather than full-bleed, so he reads as standing further back
-          — about 80% of the scale a full-bleed cover would force, which keeps
-          him prominent the way the reference hero is without pressing him into
-          the viewer. Offset from the top so his head clears the floating nav,
-          and full height so his lower body runs behind the What I Do cards. */}
-      <div className="absolute left-1/2 top-[5%] aspect-[3/4] h-full -translate-x-1/2 sm:top-[6%]">
-        <video
-          ref={videoRef}
-          poster="/assets/hero-poster.jpg"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          /* The box carries the frame's own 3:4 ratio and the video covers it
-             exactly, so .video-blend's feather lands on the real frame edge
-             rather than on letterbox padding. */
-          className="video-blend h-full w-full object-cover object-top"
-        >
-          <source src="/assets/hero-loop.webm" type="video/webm" />
-          <source src="/assets/hero-loop.mp4" type="video/mp4" />
-        </video>
-      </div>
+    // Pinned for the height of the section, then pulled back out of the flow
+    // by the negative margin so it contributes no height of its own.
+    <div
+      className="pointer-events-none sticky top-0 z-0 -mb-[100svh] h-[100svh] overflow-hidden"
+      aria-hidden="true"
+    >
+      <video
+        ref={videoRef}
+        poster="/assets/hero-poster.jpg"
+        muted
+        playsInline
+        /* Fully buffered up front: scrubbing a partially loaded file stalls. */
+        preload="auto"
+        className="h-full w-full object-cover object-[62%_top]"
+      >
+        <source src="/assets/hero-loop.webm" type="video/webm" />
+        <source src="/assets/hero-loop.mp4" type="video/mp4" />
+      </video>
 
-      {/*
-        Legibility stack, tuned for a container that spans the hero and the
-        What I Do grid. Anchoring the clip to the top lets his head sit in the
-        hero and the rest of his body carry on down behind the cards.
-
-        Horizontal: weighted left, where the hero copy sits, and released on
-        the right so he stays visible.
-        Vertical: light through the hero, deepening across the card grid so
-        the cards keep their contrast, then solid at the very bottom so the
-        section hands off cleanly to the next.
-      */}
-      <div className="absolute inset-0 bg-gradient-to-r from-void from-2% via-void/40 via-42% to-transparent to-78% lg:via-void/25" />
-      <div className="absolute inset-0 bg-gradient-to-b from-void/55 via-transparent via-40% to-void" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_46%_34%_at_8%_34%,rgba(10,4,4,0.92),transparent_72%)]" />
+      {/* Legibility: weighted left under the copy, released on the right so he
+          stays visible, and solid at the bottom to hand off to the next
+          section. */}
+      <div className="absolute inset-0 bg-gradient-to-r from-void from-2% via-void/45 via-42% to-transparent to-80%" />
+      <div className="absolute inset-0 bg-gradient-to-b from-void/60 via-transparent via-35% to-void" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_46%_40%_at_8%_44%,rgba(25,10,12,0.92),transparent_72%)]" />
     </div>
   );
 }
