@@ -36,12 +36,14 @@ export const profile = {
   },
 } as const;
 
-/** The FACTS table from the source portfolio, verbatim. */
-export const facts = [
-  { k: 'NAME', v: 'Allam Ghaben' },
-  { k: 'ROLE', v: 'Software Engineer' },
-  { k: 'FIELD', v: 'Intelligent systems, end to end' },
-  { k: 'REACH', v: '@_3a1m, everywhere' },
+/**
+ * Hero figures. Sourced: the follower/following counts are the ones published
+ * on the source portfolio's Instagram card, and the location is IG_BIO[0].
+ */
+export const stats = [
+  { value: '2,444', label: 'INSTAGRAM\nFOLLOWERS' },
+  { value: '309', label: 'ACCOUNTS\nFOLLOWING' },
+  { value: 'GAZA', label: 'BASED IN\nPALESTINE' },
 ];
 
 export const navLinks = [

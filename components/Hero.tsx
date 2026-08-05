@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useReducedMotion } from 'framer-motion';
-import { facts, profile } from '@/lib/data';
+import { profile, stats } from '@/lib/data';
 import LanyardCard from './LanyardCard';
 import { ArrowIcon, GlobeIcon, PinIcon, SparkIcon } from './Icons';
 
@@ -104,11 +104,21 @@ export default function Hero() {
             <p className="text-[0.9rem] leading-relaxed text-bone/90">{profile.note}</p>
           </motion.div>
 
-          <motion.dl {...rise(0.58)} className="grid max-w-sm grid-cols-2 gap-2.5">
-            {facts.map((fact) => (
-              <div key={fact.k} className="glass rounded-xl px-4 py-3.5">
-                <dt className="mono text-[0.55rem] tracking-[0.24em] text-crimson">{fact.k}</dt>
-                <dd className="mt-1.5 text-[0.82rem] leading-snug text-bone">{fact.v}</dd>
+          <motion.dl
+            {...rise(0.58)}
+            /* A soft wash rather than a card: the reference sets these figures
+               straight on its background, but here they sit over his lit
+               t-shirt and the small labels lose contrast without it. */
+            className="-mx-4 max-w-sm space-y-5 rounded-2xl bg-[linear-gradient(90deg,rgba(25,10,12,0.88),rgba(25,10,12,0.6)_62%,transparent)] px-4 py-4"
+          >
+            {stats.map((stat) => (
+              <div key={stat.value} className="flex items-center gap-5">
+                <dt className="display glow-text w-32 shrink-0 text-[2.4rem] leading-none text-crimson sm:text-[2.9rem]">
+                  {stat.value}
+                </dt>
+                <dd className="whitespace-pre-line text-[0.62rem] font-semibold uppercase leading-[1.6] tracking-[0.16em] text-ash">
+                  {stat.label}
+                </dd>
               </div>
             ))}
           </motion.dl>
