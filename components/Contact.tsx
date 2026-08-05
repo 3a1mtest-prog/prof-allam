@@ -4,7 +4,7 @@ import { ArrowIcon, SparkIcon, socialIconMap, type SocialIconName } from './Icon
 
 export default function Contact() {
   return (
-    <footer id="contact" className="relative z-10 px-5 pb-36 pt-16 sm:px-8 sm:pb-40 sm:pt-24">
+    <footer id="contact" className="relative z-10 bg-void/80 px-5 pb-36 pt-16 backdrop-blur-[2px] sm:px-8 sm:pb-40 sm:pt-24">
       <div className="mx-auto w-full max-w-6xl">
         <div className="card overflow-hidden p-7 sm:p-12">
           <div className="grid gap-12 lg:grid-cols-[1fr_1fr]">
